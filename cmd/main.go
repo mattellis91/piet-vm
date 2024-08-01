@@ -1,14 +1,15 @@
 package main
 
 import (
-	"image"
-	_ "image/png"
-    _ "image/jpeg"
-    _ "image/png"
 	"flag"
 	"fmt"
+	"image"
+	_ "image/jpeg"
+	_ "image/png"
 	"log"
 	"os"
+
+	pietvm "github.com/mattellis91/piet-vm"
 )
 
 var verbose = flag.Bool("v", false, "verbose")
@@ -28,7 +29,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("%v", im)
+	//fmt.Printf("%v", im)
+
+	in := pietvm.New(im)
+	in.Run()
+	println()
 	
 	// if len(flag.Args()) != 1 {
 	// 	flag.Usage()
