@@ -2,7 +2,7 @@ package pietvm
 
 import (
 	"bufio"
-	_ "fmt"
+	"fmt"
 	"image"
 	"image/color"
 	"io"
@@ -27,6 +27,23 @@ type Interpreter struct {
 func (in *Interpreter) Run() {
 	for in.move() {
 	}
+}
+
+func (in *Interpreter) Debug() {
+	for {
+		var inp int
+		fmt.Scanf("%v", &inp)
+		in.move()
+		in.DebugPrint()
+	}
+}
+
+func (in *Interpreter) DebugPrint() {
+	fmt.Printf("Stack: %v \n", in.Stack)
+	fmt.Printf("DP: %v \n", in.dp)
+	fmt.Printf("CC: %v \n", in.cc)
+	fmt.Printf("Pos: %v", in.pos)
+	fmt.Println()
 }
 
 func (in *Interpreter) move() bool {
